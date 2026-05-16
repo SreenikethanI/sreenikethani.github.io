@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components";
+const navLinks = [
+  // { name: "Summary", href: "#summary" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Education", href: "#education" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" },
+];
+---
+
+<header class="fixed top-0 w-full z-50 bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-border-light dark:border-border-dark transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="shrink-0">
+        <a href="#" class="text-xl font-bold text-primary tracking-tight">Sreenikethan Iyer</a>
+      </div>
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8">
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors font-medium">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <a href="/resume.pdf" target="_blank" class="hidden sm:inline-block px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white dark:hover:text-white rounded-md transition-colors text-sm font-semibold">
+          View Resume
+        </a>
+        <button id="theme-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none rounded-lg text-sm p-2.5 transition-colors cursor-pointer" aria-label="Toggle Dark Mode">
+          <Icon name="fa6-solid:moon" id="theme-toggle-dark-icon" class="hidden w-5 h-5" />
+          <Icon name="fa6-solid:sun" id="theme-toggle-light-icon" class="hidden w-5 h-5" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+  const themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+  const themeToggleBtn = document.getElementById("theme-toggle");
+
+  if (document.documentElement.classList.contains("dark")) {
+    themeToggleLightIcon?.classList.remove("hidden");
+  } else {
+    themeToggleDarkIcon?.classList.remove("hidden");
+  }
+
+  themeToggleBtn?.addEventListener("click", () => {
+    themeToggleDarkIcon?.classList.toggle("hidden");
+    themeToggleLightIcon?.classList.toggle("hidden");
+    document.documentElement.classList.toggle("dark");
+  });
+</script>

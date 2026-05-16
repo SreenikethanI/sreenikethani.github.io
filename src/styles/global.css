@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Override default slate colors with Gruvbox colors */
+  --color-slate-50: #fbf1c7;   /* light0 */
+  --color-slate-100: #ebdbb2;  /* light1 */
+  --color-slate-200: #d5c4a1;  /* light2 */
+  --color-slate-300: #bdae93;  /* light3 */
+  --color-slate-400: #a89984;  /* light4 */
+  --color-slate-500: #928374;  /* gray */
+  --color-slate-600: #7c6f64;  /* dark4 */
+  --color-slate-700: #504945;  /* dark2 */
+  --color-slate-800: #3c3836;  /* dark1 */
+  --color-slate-900: #282828;  /* dark0 */
+  --color-slate-950: #1d2021;  /* dark0_hard */
+  
+  --color-white: #f9f5d7;      /* light0_hard */
+
+  /* Override blue for gradients */
+  --color-blue-400: #83a598;   /* bright_blue */
+  --color-blue-500: #458588;   /* neutral_blue */
+
+  /* Primary Accent: Gruvbox Orange */
+  --color-primary: #fe8019;       /* bright_orange */
+  --color-primary-hover: #d65d0e; /* neutral_orange */
+
+  /* Retain variables for backwards compatibility */
+  --color-bg-dark: var(--color-slate-900);
+  --color-bg-light: var(--color-slate-50);
+  --color-text-dark: var(--color-slate-100);
+  --color-text-light: var(--color-slate-800);
+  --color-card-dark: var(--color-slate-800);
+  --color-card-light: var(--color-white);
+  --color-border-dark: var(--color-slate-700);
+  --color-border-light: var(--color-slate-200);
+
+  /* Font mappings */
+  --font-sans: "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Georgia", ui-serif, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased transition-colors duration-300 font-sans;
+  }
+
+  .dark body {
+    @apply bg-slate-900 text-slate-100;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}

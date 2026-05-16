@@ -1,0 +1,50 @@
+---
+import "@src/styles/global.css";
+import Navbar from "@src/components/Navbar.astro";
+import Footer from "@src/components/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Sreenikethan Iyer - Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <script is:inline>
+      const getThemePreference = () => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
+        }
+        return "dark";
+      };
+
+      const isDark = getThemePreference() === "dark";
+      document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+      if (typeof localStorage !== "undefined") {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+      }
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col transition-colors duration-300 relative">
+    <Navbar />
+    <main class="grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
