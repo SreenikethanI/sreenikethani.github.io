@@ -4,12 +4,23 @@ Welcome to the repository for my personal portfolio website! This site showcases
 
 ## Tech Stack
 
-| Technology       | Purpose                                       |
+Runtime:
+
+| Tech             | Purpose                                       |
 | :--------------- | :-------------------------------------------- |
 | **Astro**        | Core framework & Static Site Generation (SSG) |
 | **Tailwind CSS** | Styling                                       |
-| **Vite**         | Build tool and bundler                        |
+| **Iconify**      | Icon library                                  |
 | **GitHub Pages** | Hosting & deployment                          |
+
+Development:
+
+| Tech             | Purpose                                       |
+| :--------------- | :-------------------------------------------- |
+| **TypeScript**   | Type checking                                 |
+| **Node.js**      | Runtime environment                           |
+| **NPM**          | Package manager                               |
+| **Vite**         | Build tool and bundler (used by Astro)        |
 
 ## Getting Started
 
@@ -24,4 +35,4 @@ npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:4321`.
+The site will be available at http://localhost:4321.
