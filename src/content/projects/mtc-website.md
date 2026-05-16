@@ -1,8 +1,8 @@
 ---
+order: 4
 title: "MTC Website"
-description: "A one-stop website for all things MTC-related."
-tags: ["React", "HTML", "CSS", "JS"]
-externalUrl: "https://mtcbpdcdubai.github.io/"
-githubUrl: "https://github.com/mtcbpdcdubai"
-order: 2
+tags: ["React", "JavaScript", "CSS"]
+githubUrl: "https://github.com/mtcbpdcdubai/mtcbpdcdubai.github.io"
+demoUrl: "https://mtcbpdcdubai.github.io"
 ---
+A one-stop website for all things MTC-related.

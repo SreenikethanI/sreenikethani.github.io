@@ -1,7 +1,7 @@
 ---
+order: 1
 degree: "B. E. Computer Science Engineering"
 institution: "BITS Pilani Dubai Campus"
-duration: "Graduating soon"
-year: "2024"
-order: 1
+yearBatch: "Batch of 2026"
 ---
+CGPA: 9.47

@@ -1,6 +1,6 @@
 ---
-title: "True Framerate Estimator (WIP)"
-description: "Tool to visually guess the real framerate of a video file by temporally comparing frames."
+order: 7
+title: "True Framerate Estimator"
 tags: ["C# .NET", "FFmpeg"]
-order: 3
 ---
+Tool to visually guess the real framerate of a video file by temporally comparing frames. (WIP)

@@ -1,7 +1,8 @@
 ---
+order: 5
 title: "Timetabler"
-description: "A better Timetable renderer for BITS Pilani Dubai Campus students."
-tags: ["HTML", "CSS", "JS"]
-githubUrl: "https://github.com/SreenikethanI/timetabler"
-order: 1
+tags: ["HTML", "CSS", "JavaScript"]
+githubUrl: "https://github.com/SreenikethanI/timetabler/tree/dev"
+demoUrl: "https://sreenikethani.github.io/timetabler"
 ---
+A better Timetable renderer for BITS Pilani Dubai Campus students. (WIP)

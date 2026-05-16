@@ -1,26 +1,21 @@
 ---
-import skillsDataRaw from "@src/content/skills.json";
+import { getCollection } from 'astro:content';
 
-interface SkillCategory {
-  name: string;
-  skills: string[];
-}
+const skills = (await getCollection("skills")).map(file => file.data);
 
-interface SkillsData {
-  sections: { name: string; categories: SkillCategory[] }[];
-}
-
-const skillsData = skillsDataRaw as SkillsData;
+// Sort sections by order
+skills.sort((a, b) => a.order - b.order);
 ---
+
 <section id="skills" class="py-16">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {
-      skillsData.sections.map(section => (
+      skills.map(section => (
         <div class="mb-16">
           <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12 flex items-center">
             <span class="w-8 h-1 bg-primary mr-4 rounded-full"></span>
-            {section.name}
+            {section.title}
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {section.categories.map(category => (

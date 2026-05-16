@@ -1,6 +1,6 @@
 ---
+order: 6
 title: "Nuclei Segmentation for H&E images"
-description: "A model to segment the nuclei in Hematoxylin- and eosin-stained imagery."
 tags: ["Python", "TensorFlow"]
-order: 7
 ---
+A model to segment the nuclei in Hematoxylin- and Eosin-stained imagery.

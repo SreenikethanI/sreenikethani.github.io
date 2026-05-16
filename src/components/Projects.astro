@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { Icon } from "astro-icon/components";
 
-const projects = await getCollection("projects");
-projects.sort((a, b) => a.data.order - b.data.order);
+const projectsList = await getCollection("projects");
+projectsList.sort((a, b) => a.data.order - b.data.order);
 ---
 <section id="projects" class="py-16 bg-slate-100/50 dark:bg-slate-800/30 transition-colors duration-300">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,36 +12,41 @@ projects.sort((a, b) => a.data.order - b.data.order);
       Featured Projects
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map((project) => (
-        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md dark:shadow-none border border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col group">
-          <div class="p-6 flex flex-col h-full relative">
-            <div class="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-primary to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 mt-1">{project.data.title}</h3>
-            <p class="text-slate-700 dark:text-slate-300 mb-6 grow">{project.data.description}</p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              {project.data.tags.map((tag: string) => (
-                <span class="px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold rounded-full border border-slate-300 dark:border-slate-600">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-100 dark:border-slate-700">
-              {project.data.githubUrl && (
-                <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors text-sm font-semibold flex items-center gap-1.5">
-                  <Icon name="fa6-brands:github" class="w-4 h-4" />
-                  GitHub
-                </a>
-              )}
-              {project.data.externalUrl && (
-                <a href={project.data.externalUrl} target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors text-sm font-semibold flex items-center gap-1.5">
-                  <Icon name="fa6-solid:arrow-up-right-from-square" class="w-4 h-4" />
-                  Live Demo
-                </a>
-              )}
+      {projectsList.map(async (project, _index) => {
+        const { Content } = await render(project);
+        return (
+          <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md dark:shadow-none border border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col group">
+            <div class="p-6 flex flex-col h-full relative">
+              <div class="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-primary to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 mt-1">{project.data.title}</h3>
+              <div class="text-slate-700 dark:text-slate-300 mb-6 grow">
+                <Content />
+              </div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                {project.data.tags.map((tag: string) => (
+                  <span class="px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold rounded-full border border-slate-300 dark:border-slate-600">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-100 dark:border-slate-700">
+                {project.data.githubUrl && (
+                  <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors text-sm font-semibold flex items-center gap-1.5">
+                    <Icon name="fa6-brands:github" class="w-4 h-4" />
+                    GitHub
+                  </a>
+                )}
+                {project.data.demoUrl && (
+                  <a href={project.data.demoUrl} target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors text-sm font-semibold flex items-center gap-1.5">
+                    <Icon name="fa6-solid:arrow-up-right-from-square" class="w-4 h-4" />
+                    Live demo
+                  </a>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   </div>
 </section>
