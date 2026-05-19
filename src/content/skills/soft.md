@@ -9,6 +9,7 @@ categories:
       - Team Collaboration
   - name: Professional
     skills:
+      - Attention to Detail
       - Adaptability
       - Critical Thinking
       - Problem Solving
