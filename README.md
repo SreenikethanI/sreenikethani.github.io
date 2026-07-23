@@ -24,15 +24,24 @@ Development:
 
 ## Getting Started
 
-To run this project locally, run these commands:
-
+First, clone the repo:
 ```bash
 git clone https://github.com/SreenikethanI/sreenikethani.github.io.git
 cd sreenikethani.github.io
-
-npm install
-
-npm run dev
 ```
+
+Then, install packages and run:
+
+1. ... using bun:
+    ```bash
+    bun install
+    bun run dev
+    ```
+
+2. ... using npm:
+    ```bash
+    npm install
+    npm run dev
+    ```
 
 The site will be available at http://localhost:4321.
